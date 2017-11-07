@@ -1,9 +1,6 @@
-package persistence.entity;
+package ibd.persistence.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Subcategory {
@@ -12,6 +9,8 @@ public class Subcategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @ManyToOne
+    private Category category;
 
     public Long getId() {
         return id;
@@ -27,5 +26,13 @@ public class Subcategory {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

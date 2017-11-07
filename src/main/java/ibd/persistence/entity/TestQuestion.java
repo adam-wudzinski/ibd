@@ -1,6 +1,4 @@
-package persistence.entity;
-
-import jdk.nashorn.internal.objects.annotations.Getter;
+package ibd.persistence.entity;
 
 import javax.persistence.*;
 
@@ -11,10 +9,15 @@ public class TestQuestion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String question;
+    @Column(name = "wrong_answer_1")
     private String wrongAnswer1;
+    @Column(name = "wrong_answer_2")
     private String wrongAnswer2;
+    @Column(name = "wrong_answer_3")
     private String wrongAnswer3;
     private String correctAnswer;
+    @ManyToOne
+    private Subcategory subcategory;
 
     public Long getId() {
         return id;
@@ -62,5 +65,13 @@ public class TestQuestion {
 
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
+    }
+
+    public Subcategory getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
     }
 }
