@@ -1,6 +1,7 @@
 package ibd;
 
 import ibd.persistence.entity.Category;
+import ibd.persistence.entity.OpenQuestion;
 import ibd.persistence.entity.Subcategory;
 import ibd.persistence.repository.CategoryRepository;
 import ibd.persistence.repository.OpenQuestionRepository;
@@ -36,6 +37,19 @@ public class Main {
             categoryRepository.save(historyCategory);
             subcategoryRepository.save(subcategory1);
             subcategoryRepository.save(subcategory2);
+
+            OpenQuestion openQuestion = new OpenQuestion();
+            openQuestion.setSubcategory(subcategory1);
+            openQuestion.setQuestion("Hello?");
+            openQuestion.setAnswer("World");
+            openQuestionRepository.save(openQuestion);
+
+            OpenQuestion openQuestion1 = new OpenQuestion();
+            openQuestion1.setSubcategory(subcategory1);
+            openQuestion.setQuestion("Pytanie?");
+            openQuestion.setAnswer("Odpowiedz");
+            openQuestionRepository.save(openQuestion1);
+
         };
     }
 }
