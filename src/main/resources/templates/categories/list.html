@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <thymeleaf th:replace="fragments/head  :: head_meta_tags" />
+    <title>All categories</title>
+</head>
+<body>
+    <div th:replace="fragments/nav :: nav"/>
+    <div class="container">
+
+        <ul class="list-group" th:each="category : ${categories}">
+            <li class="list-group-item" th:text="${category.name}" />
+        </ul>
+    </div>
+</body>
+</html>
