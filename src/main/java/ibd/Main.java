@@ -27,6 +27,8 @@ public class Main {
         return x -> {
             Category historyCategory = new Category();
             historyCategory.setName("History");
+            Category physicsCategory = new Category();
+            physicsCategory.setName("Physics");
             Subcategory subcategory1 = new Subcategory();
             subcategory1.setName("Prehistory");
             subcategory1.setCategory(historyCategory);
@@ -35,6 +37,7 @@ public class Main {
             subcategory2.setCategory(historyCategory);
 
             categoryRepository.save(historyCategory);
+            categoryRepository.save(physicsCategory);
             subcategoryRepository.save(subcategory1);
             subcategoryRepository.save(subcategory2);
 

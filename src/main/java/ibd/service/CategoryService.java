@@ -17,4 +17,11 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
+    public void save(Category category) {
+        categoryRepository.save(category);
+    }
+
+    public void remove(Long id) {
+        categoryRepository.delete(id);
+    }
 }

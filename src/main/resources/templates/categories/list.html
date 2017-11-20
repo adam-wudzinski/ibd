@@ -7,10 +7,21 @@
 <body>
     <div th:replace="fragments/nav :: nav"/>
     <div class="container">
-
+        <h1>Categories</h1>
+        <a th:href="@{/categories/add}" class="btn btn-success">Add</a>
         <ul class="list-group" th:each="category : ${categories}">
             <li class="list-group-item" th:text="${category.name}" />
         </ul>
+
+<!--        <div class="table-responsive">
+            <table class="table">
+                <th:block th:each="category : ${categories}">
+                    <tr>
+                        <td th:text="${category.name}">A Smoke Test'</td>
+                    </tr>
+                </th:block>
+            </table>
+        </div>-->
     </div>
 </body>
 </html>
