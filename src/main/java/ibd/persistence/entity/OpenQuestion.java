@@ -12,6 +12,7 @@ public class OpenQuestion  {
     private String question;
     private String answer;
     @ManyToOne
+    @JoinColumn(name = "subcategory_id")
     private Subcategory subcategory;
 
     public Long getId() {

@@ -1,6 +1,7 @@
 package ibd.persistence.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Subcategory {
@@ -10,7 +11,12 @@ public class Subcategory {
     private Long id;
     private String name;
     @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
+    @OneToMany(mappedBy = "subcategory", cascade = CascadeType.REMOVE)
+    private List<OpenQuestion> openQuestion;
+    @OneToMany(mappedBy = "subcategory", cascade = CascadeType.REMOVE)
+    private List<OpenQuestion> closeQuestions;
 
     public Long getId() {
         return id;
@@ -34,5 +40,21 @@ public class Subcategory {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public List<OpenQuestion> getOpenQuestion() {
+        return openQuestion;
+    }
+
+    public void setOpenQuestion(List<OpenQuestion> openQuestion) {
+        this.openQuestion = openQuestion;
+    }
+
+    public List<OpenQuestion> getCloseQuestions() {
+        return closeQuestions;
+    }
+
+    public void setCloseQuestions(List<OpenQuestion> closeQuestions) {
+        this.closeQuestions = closeQuestions;
     }
 }

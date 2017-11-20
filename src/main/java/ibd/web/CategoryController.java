@@ -32,7 +32,7 @@ public class CategoryController {
         return "redirect:/categories";
     }
 
-    @DeleteMapping("/")
+    @GetMapping("/delete")
     public String remove(@RequestParam Long id){
         categoryService.remove(id);
         return "redirect:/categories";

@@ -17,6 +17,7 @@ public class TestQuestion {
     private String wrongAnswer3;
     private String correctAnswer;
     @ManyToOne
+    @JoinColumn(name = "subcategory_id")
     private Subcategory subcategory;
 
     public Long getId() {
