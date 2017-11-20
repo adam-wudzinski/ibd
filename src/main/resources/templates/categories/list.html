@@ -18,7 +18,7 @@
         </ul>-->
         <div class="borderBottom" th:each="category : ${categories}">
             <p th:text="${category.name}"/>
-            <a class="btn btn-warning" href="#" th:href="@{/categories}">Edit</a>
+            <a class="btn btn-warning" href="#" th:href="@{/categories/edit(id=${category.id})}">Edit</a>
             <a class="btn btn-danger" href="#" th:href="@{/categories/delete(id=${category.id})}"
                onclick="return confirm('Do you really want to delete?');">Delete</a>
         </div>

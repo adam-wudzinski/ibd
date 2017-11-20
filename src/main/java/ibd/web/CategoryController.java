@@ -38,4 +38,16 @@ public class CategoryController {
         return "redirect:/categories";
     }
 
+    @GetMapping("/edit")
+    public String edit(@RequestParam Long id, Model model){
+        model.addAttribute("category", categoryService.findOne(id));
+        return "categories/edit";
+    }
+
+    @PostMapping("/edit")
+    public String postEdit(@ModelAttribute Category category){
+        categoryService.save(category);
+        return "redirect:/categories";
+    }
+
 }
