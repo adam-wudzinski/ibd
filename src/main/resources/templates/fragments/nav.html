@@ -9,9 +9,15 @@
             <li><a href="/open-questions">Open Questions</a></li>
             <li><a href="/test-questions">Close Questions</a></li>
         </ul>
+
         <ul class="nav navbar-nav navbar-right">
             <li><a th:href="@{/api}">API</a></li>
-            <li><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+  <!--          <span th:text="${#authorization.expression('isAuthenticated()')} ?
+               ${#authentication.name} :
+               'the user is NOT logged in'">
+        </span>-->
+            <li th:if="${#authorization.expression('!isAuthenticated()')}"><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+            <li th:if="${#authorization.expression('isAuthenticated()')}"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
         </ul>
     </div>
 </nav>
