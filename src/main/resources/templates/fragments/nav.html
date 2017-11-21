@@ -16,8 +16,8 @@
                ${#authentication.name} :
                'the user is NOT logged in'">
         </span>-->
-            <li th:if="${#authorization.expression('!isAuthenticated()')}"><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
-            <li th:if="${#authorization.expression('isAuthenticated()')}"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+            <li th:if="${#authorization.expression('!isAuthenticated()')}"><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li th:if="${#authorization.expression('isAuthenticated()')}"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
     </div>
 </nav>

@@ -7,6 +7,20 @@
 <body>
     <div th:replace="fragments/nav :: nav"></div>
     <div class="container">
+        <h1>Subcategories</h1>
+        <a th:href="@{/subcategories/add}" class="btn btn-success">Add</a>
+        <ul class="list-group">
+            <li class="list-group-item" th:each="subcategory : ${subcategories}">
+                <h3 th:text="${subcategory.name}"/>
+                <span>
+                    <a class="btn btn-warning" href="#" th:href="@{/subcategories/edit(id=${subcategory.id})}">Edit</a>
+                </span>
+                <span>
+                    <a class="btn btn-danger" href="#" th:href="@{/subcategories/delete(id=${subcategory.id})}"
+                       onclick="return confirm('Do you really want to delete?');">Delete</a>
+                </span>
+            </li>
+        </ul>
     </div>
 </body>
 </html>
