@@ -9,20 +9,18 @@
     <div class="container">
         <h1>Categories</h1>
         <a th:href="@{/categories/add}" class="btn btn-success">Add</a>
-<!--        <ul class="list-group" th:each="category : ${categories}">
-            <li class="list-group-item" th:text="${category.name}">
-                <a th:href="@{/categories/add}" class="btn btn-warning"></a>
+        <ul class="list-group">
+            <li class="list-group-item" th:each="category : ${categories}">
+                <h3 th:text="${category.name}"/>
+                <span>
+                    <a class="btn btn-warning" href="#" th:href="@{/categories/edit(id=${category.id})}">Edit</a>
+                </span>
+                <span>
+                    <a class="btn btn-danger" href="#" th:href="@{/categories/delete(id=${category.id})}"
+                       onclick="return confirm('Do you really want to delete?');">Delete</a>
+                </span>
             </li>
-
-
-        </ul>-->
-        <div class="borderBottom" th:each="category : ${categories}">
-            <p th:text="${category.name}"/>
-            <a class="btn btn-warning" href="#" th:href="@{/categories/edit(id=${category.id})}">Edit</a>
-            <a class="btn btn-danger" href="#" th:href="@{/categories/delete(id=${category.id})}"
-               onclick="return confirm('Do you really want to delete?');">Delete</a>
-        </div>
-
+        </ul>
     </div>
 </body>
 </html>
