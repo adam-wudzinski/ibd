@@ -3,7 +3,7 @@ package ibd.persistence.entity;
 import javax.persistence.*;
 
 @Entity
-public class TestQuestion {
+public class ClosedQuestion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

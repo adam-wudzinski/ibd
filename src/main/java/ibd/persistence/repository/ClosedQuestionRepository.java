@@ -1,10 +1,9 @@
 package ibd.persistence.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ibd.persistence.entity.TestQuestion;
+import ibd.persistence.entity.ClosedQuestion;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.stereotype.Repository;
 
 @RepositoryRestResource
-public interface TestQuestionRepository extends JpaRepository<TestQuestion,  Long> {
+public interface ClosedQuestionRepository extends JpaRepository<ClosedQuestion,  Long> {
 }

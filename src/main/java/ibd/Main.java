@@ -3,10 +3,11 @@ package ibd;
 import ibd.persistence.entity.Category;
 import ibd.persistence.entity.OpenQuestion;
 import ibd.persistence.entity.Subcategory;
+import ibd.persistence.entity.ClosedQuestion;
 import ibd.persistence.repository.CategoryRepository;
 import ibd.persistence.repository.OpenQuestionRepository;
 import ibd.persistence.repository.SubcategoryRepository;
-import ibd.persistence.repository.TestQuestionRepository;
+import ibd.persistence.repository.ClosedQuestionRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,7 +24,7 @@ public class Main {
     public CommandLineRunner loadData(CategoryRepository categoryRepository,
                                       SubcategoryRepository subcategoryRepository,
                                       OpenQuestionRepository openQuestionRepository,
-                                      TestQuestionRepository testQuestionRepository) {
+                                      ClosedQuestionRepository closedQuestionRepository) {
         return x -> {
             Category historyCategory = new Category();
             historyCategory.setName("History");
@@ -53,6 +54,14 @@ public class Main {
             openQuestion1.setAnswer("Odpowiedz");
             openQuestionRepository.save(openQuestion1);
 
+            ClosedQuestion closedQuestion = new ClosedQuestion();
+            closedQuestion.setSubcategory(subcategory1);
+            closedQuestion.setQuestion("Test question???");
+            closedQuestion.setWrongAnswer1("A");
+            closedQuestion.setWrongAnswer2("B");
+            closedQuestion.setWrongAnswer3("C");
+            closedQuestion.setCorrectAnswer("D");
+            closedQuestionRepository.save(closedQuestion);
         };
     }
 }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <thymeleaf th:replace="fragments/head  :: head_meta_tags" />
+    <title>Edit closed question</title>
+</head>
+<body>
+    <div th:replace="fragments/nav :: nav"></div>
+    <div class="container">
+        <h1>Edit question</h1>
+        <form th:action="@{/closed-questions/edit}" th:object="${question}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+            <div class="form-group">
+                <label>Question:</label>
+                <input type="text" class="form-control" th:field="*{question}"/>
+            </div>
+            <div class="form-group">
+                <label>Correct answer:</label>
+                <input type="text" class="form-control" th:field="*{correctAnswer}"/>
+            </div>
+            <div class="form-group">
+                <label>Wrong answer:</label>
+                <input type="text" class="form-control" th:field="*{wrongAnswer1}"/>
+            </div>
+            <div class="form-group">
+                <label>Wrong answer:</label>
+                <input type="text" class="form-control" th:field="*{wrongAnswer2}"/>
+            </div>
+            <div class="form-group">
+                <label>Wrong answer:</label>
+                <input type="text" class="form-control" th:field="*{wrongAnswer3}"/>
+            </div>
+            <div class="form-group">
+                <label for="categorySelect">Subcategory:</label>
+                <select th:field="*{subcategory}" id="categorySelect" class="form-control">
+                    <option th:each="subcategory : ${subcategories}"
+                            th:value="${subcategory.id}" th:text="${subcategory.name}">...</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
