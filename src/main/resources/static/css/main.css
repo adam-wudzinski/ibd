@@ -1,3 +1,6 @@
 h1 {
     display: inline-block
 }
+p {
+    font-size: 150%;
+}

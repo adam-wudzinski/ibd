@@ -16,7 +16,7 @@ public class Subcategory {
     @OneToMany(mappedBy = "subcategory", cascade = CascadeType.REMOVE)
     private List<OpenQuestion> openQuestion;
     @OneToMany(mappedBy = "subcategory", cascade = CascadeType.REMOVE)
-    private List<OpenQuestion> closeQuestions;
+    private List<ClosedQuestion> closedQuestions;
 
     public Long getId() {
         return id;
@@ -50,11 +50,11 @@ public class Subcategory {
         this.openQuestion = openQuestion;
     }
 
-    public List<OpenQuestion> getCloseQuestions() {
-        return closeQuestions;
+    public List<ClosedQuestion> getClosedQuestions() {
+        return closedQuestions;
     }
 
-    public void setCloseQuestions(List<OpenQuestion> closeQuestions) {
-        this.closeQuestions = closeQuestions;
+    public void setClosedQuestions(List<ClosedQuestion> closedQuestions) {
+        this.closedQuestions = closedQuestions;
     }
 }
