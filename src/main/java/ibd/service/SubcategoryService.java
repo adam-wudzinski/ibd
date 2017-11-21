@@ -1,6 +1,5 @@
 package ibd.service;
 
-import ibd.persistence.entity.Category;
 import ibd.persistence.entity.Subcategory;
 import ibd.persistence.repository.SubcategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;

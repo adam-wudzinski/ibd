@@ -7,7 +7,7 @@
 <body>
     <div th:replace="fragments/nav :: nav"></div>
     <div class="container">
-        <h1>Edit category</h1>
+        <h1>Edit subcategory</h1>
         <form th:action="@{/subcategories/add}" th:object="${subcategory}" method="post">
             <input type="hidden" th:field="*{id}"/>
             <div class="form-group">

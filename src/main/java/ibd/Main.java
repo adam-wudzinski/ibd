@@ -49,8 +49,8 @@ public class Main {
 
             OpenQuestion openQuestion1 = new OpenQuestion();
             openQuestion1.setSubcategory(subcategory1);
-            openQuestion.setQuestion("Pytanie?");
-            openQuestion.setAnswer("Odpowiedz");
+            openQuestion1.setQuestion("Pytanie?");
+            openQuestion1.setAnswer("Odpowiedz");
             openQuestionRepository.save(openQuestion1);
 
         };
