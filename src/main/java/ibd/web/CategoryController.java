@@ -51,7 +51,10 @@ public class CategoryController {
     }
 
     @PostMapping("/edit")
-    public String postEdit(@ModelAttribute Category category){
+    public String postEdit(@ModelAttribute Category category, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return "categories/edit";
+        }
         categoryService.save(category);
         return "redirect:/categories";
     }

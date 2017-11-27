@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <thymeleaf th:replace="fragments/head  :: head_meta_tags" />
+    <link rel="stylesheet" href="../../static/css/styles.css"/>
     <title>Add category</title>
 </head>
 <body>
@@ -10,10 +11,11 @@
     <div class="container">
         <h1>Create new category</h1>
         <form th:action="@{/categories/add}" th:object="${category}" method="post">
-            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
-            <div class="form-group">
+            <div class="form-group" th:classappend="${#fields.hasErrors('name')} ? 'has-error has-feedback':''">
                 <label>Category name:</label>
                 <input type="text" class="form-control" th:field="*{name}"/>
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                <p class="form-error-x" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
         </form>

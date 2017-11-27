@@ -4,3 +4,8 @@ h1 {
 p {
     font-size: 150%;
 }
+
+.form-error-x {
+    color: darkred;
+    font-size: 120%;
+}
