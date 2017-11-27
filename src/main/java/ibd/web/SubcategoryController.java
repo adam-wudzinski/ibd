@@ -57,7 +57,11 @@ public class SubcategoryController {
     }
 
     @PostMapping("/edit")
-    public String postEdit(@ModelAttribute Subcategory subcategory){
+    public String postEdit(@Valid Subcategory subcategory, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("categories", categoryService.findAll());
+            return "subcategories/edit";
+        }
         subcategoryService.save(subcategory);
         return "redirect:/subcategories";
     }

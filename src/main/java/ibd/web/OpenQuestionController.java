@@ -57,7 +57,11 @@ public class OpenQuestionController {
     }
 
     @PostMapping("/edit")
-    public String postEdit(@ModelAttribute OpenQuestion question){
+    public String postEdit(@Valid OpenQuestion question, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("subcategories", subcategoryService.findAll());
+            return "open-questions/edit";
+        }
         openQuestionService.save(question);
         return "redirect:/open-questions";
     }

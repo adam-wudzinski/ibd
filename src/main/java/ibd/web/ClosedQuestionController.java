@@ -51,13 +51,17 @@ public class ClosedQuestionController {
 
     @GetMapping("/edit")
     public String edit(@RequestParam Long id, Model model){
-        model.addAttribute("closeQuestion", closedQuestionService.findOne(id));
+        model.addAttribute("closedQuestion", closedQuestionService.findOne(id));
         model.addAttribute("subcategories", subcategoryService.findAll());
         return "closed-questions/edit";
     }
 
     @PostMapping("/edit")
-    public String postEdit(@ModelAttribute ClosedQuestion question){
+    public String postEdit(@Valid ClosedQuestion question, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("subcategories", subcategoryService.findAll());
+            return "closed-questions/edit";
+        }
         closedQuestionService.save(question);
         return "redirect:/closed-questions";
     }
