@@ -1,13 +1,7 @@
 package ibd;
 
-import ibd.persistence.entity.Category;
-import ibd.persistence.entity.OpenQuestion;
-import ibd.persistence.entity.Subcategory;
-import ibd.persistence.entity.ClosedQuestion;
-import ibd.persistence.repository.CategoryRepository;
-import ibd.persistence.repository.OpenQuestionRepository;
-import ibd.persistence.repository.SubcategoryRepository;
-import ibd.persistence.repository.ClosedQuestionRepository;
+import ibd.persistence.entity.*;
+import ibd.persistence.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,11 +15,17 @@ public class Main {
     }
 
     @Bean
-    public CommandLineRunner loadData(CategoryRepository categoryRepository,
+    public CommandLineRunner loadData(UserRepository userRepository,
+                                      CategoryRepository categoryRepository,
                                       SubcategoryRepository subcategoryRepository,
                                       OpenQuestionRepository openQuestionRepository,
                                       ClosedQuestionRepository closedQuestionRepository) {
         return x -> {
+            User user = new User();
+            user.setLogin("admin");
+            user.setPassword("admin");
+            userRepository.save(user);
+
             Category historyCategory = new Category();
             historyCategory.setName("History");
             Category physicsCategory = new Category();
