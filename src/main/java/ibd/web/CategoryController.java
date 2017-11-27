@@ -5,7 +5,10 @@ import ibd.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/categories")
@@ -27,7 +30,10 @@ public class CategoryController {
     }
 
     @PostMapping("/add")
-    public String postAdd(@ModelAttribute Category category){
+    public String postAdd(@Valid Category category, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return "categories/add";
+        }
         categoryService.save(category);
         return "redirect:/categories";
     }

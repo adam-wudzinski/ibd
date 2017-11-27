@@ -1,6 +1,8 @@
 package ibd.persistence.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -9,6 +11,8 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
+    @Size(min=2, max=10)
     private String name;
     @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE)
     public List<Subcategory> subcategories;
