@@ -12,7 +12,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
-    @Size(min=2, max=10)
+    @Size(min=2, max=30, message = "Name field should be in range between 2 and 30")
     private String name;
     @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE)
     public List<Subcategory> subcategories;

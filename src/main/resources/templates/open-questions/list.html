@@ -11,7 +11,7 @@
         <a th:href="@{/open-questions/add}" class="btn btn-success">Add</a>
         <ul class="list-group">
             <li class="list-group-item" th:each="question : ${questions}">
-                <h3 th:text="${question.question}"/>
+                <h3 th:text="${question.questionContent}"/>
                 <span>
                     <a class="btn btn-warning" href="#" th:href="@{/open-questions/edit(id=${question.id})}">Edit</a>
                 </span>

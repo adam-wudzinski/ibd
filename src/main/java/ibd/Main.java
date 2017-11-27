@@ -44,13 +44,13 @@ public class Main {
 
             OpenQuestion openQuestion = new OpenQuestion();
             openQuestion.setSubcategory(subcategory1);
-            openQuestion.setQuestion("Hello?");
+            openQuestion.setQuestionContent("Hello?");
             openQuestion.setAnswer("World");
             openQuestionRepository.save(openQuestion);
 
             OpenQuestion openQuestion1 = new OpenQuestion();
             openQuestion1.setSubcategory(subcategory1);
-            openQuestion1.setQuestion("Pytanie?");
+            openQuestion1.setQuestionContent("Pytanie?");
             openQuestion1.setAnswer("Odpowiedz");
             openQuestionRepository.save(openQuestion1);
 

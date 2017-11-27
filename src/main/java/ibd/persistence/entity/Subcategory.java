@@ -1,6 +1,8 @@
 package ibd.persistence.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -9,9 +11,11 @@ public class Subcategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Size(min=2, max=30, message = "Name field should be in range between 2 and 30")
     private String name;
     @ManyToOne
     @JoinColumn(name = "category_id")
+    @NotNull(message = "Category cannot be null")
     private Category category;
     @OneToMany(mappedBy = "subcategory", cascade = CascadeType.REMOVE)
     private List<OpenQuestion> openQuestion;

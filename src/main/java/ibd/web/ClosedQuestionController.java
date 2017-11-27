@@ -6,7 +6,10 @@ import ibd.service.ClosedQuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/closed-questions")
@@ -25,13 +28,17 @@ public class ClosedQuestionController {
 
     @GetMapping("/add")
     public String add(Model model){
-        model.addAttribute("question", new ClosedQuestion());
+        model.addAttribute("closedQuestion", new ClosedQuestion());
         model.addAttribute("subcategories", subcategoryService.findAll());
         return "closed-questions/add";
     }
 
     @PostMapping("/add")
-    public String postAdd(@ModelAttribute ClosedQuestion question){
+    public String postAdd(@Valid ClosedQuestion question, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("subcategories", subcategoryService.findAll());
+            return "closed-questions/add";
+        }
         closedQuestionService.save(question);
         return "redirect:/closed-questions";
     }
@@ -44,7 +51,7 @@ public class ClosedQuestionController {
 
     @GetMapping("/edit")
     public String edit(@RequestParam Long id, Model model){
-        model.addAttribute("question", closedQuestionService.findOne(id));
+        model.addAttribute("closeQuestion", closedQuestionService.findOne(id));
         model.addAttribute("subcategories", subcategoryService.findAll());
         return "closed-questions/edit";
     }

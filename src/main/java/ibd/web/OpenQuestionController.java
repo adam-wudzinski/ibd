@@ -6,7 +6,10 @@ import ibd.service.SubcategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/open-questions")
@@ -25,13 +28,17 @@ public class OpenQuestionController {
 
     @GetMapping("/add")
     public String add(Model model){
-        model.addAttribute("question", new OpenQuestion());
+        model.addAttribute("openQuestion", new OpenQuestion());
         model.addAttribute("subcategories", subcategoryService.findAll());
         return "open-questions/add";
     }
 
     @PostMapping("/add")
-    public String postAdd(@ModelAttribute OpenQuestion question){
+    public String postAdd(@Valid OpenQuestion question, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("subcategories", subcategoryService.findAll());
+            return "open-questions/add";
+        }
         openQuestionService.save(question);
         return "redirect:/open-questions";
     }
@@ -44,7 +51,7 @@ public class OpenQuestionController {
 
     @GetMapping("/edit")
     public String edit(@RequestParam Long id, Model model){
-        model.addAttribute("question", openQuestionService.findOne(id));
+        model.addAttribute("openQuestion", openQuestionService.findOne(id));
         model.addAttribute("subcategories", subcategoryService.findAll());
         return "open-questions/edit";
     }

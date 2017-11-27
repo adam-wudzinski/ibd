@@ -8,11 +8,11 @@
     <div th:replace="fragments/nav :: nav"></div>
     <div class="container">
         <h1>Edit questions</h1>
-        <form th:action="@{/open-questions/edit}" th:object="${question}" method="post">
+        <form th:action="@{/open-questions/edit}" th:object="${openQuestion}" method="post">
             <input type="hidden" th:field="*{id}"/>
             <div class="form-group">
                 <label>Question:</label>
-                <input type="text" class="form-control" th:field="*{question}"/>
+                <input type="text" class="form-control" th:field="*{questionContent}"/>
             </div>
             <div class="form-group">
                 <label>Answer:</label>

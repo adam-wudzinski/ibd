@@ -2,41 +2,60 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <thymeleaf th:replace="fragments/head  :: head_meta_tags" />
+    <style>
+        .form-error-x {
+            color: darkred;
+            font-size: 120%;
+        }
+    </style>
     <title>Add closed question</title>
 </head>
 <body>
     <div th:replace="fragments/nav :: nav"></div>
     <div class="container">
         <h1>Create new question</h1>
-        <form th:action="@{/closed-questions/add}" th:object="${question}" method="post">
-            <div class="form-group">
+        <form th:action="@{/closed-questions/add}" th:object="${closedQuestion}" method="post">
+            <div class="form-group" th:classappend="${#fields.hasErrors('question')} ? 'has-error has-feedback':''">
                 <label>Question:</label>
                 <input type="text" class="form-control" th:field="*{question}"/>
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                <p class="form-error-x" th:if="${#fields.hasErrors('question')}" th:errors="*{question}">Error</p>
             </div>
-            <div class="form-group">
+            <div class="form-group" th:classappend="${#fields.hasErrors('correctAnswer')} ? 'has-error has-feedback':''">
                 <label>Correct answer:</label>
                 <input type="text" class="form-control" th:field="*{correctAnswer}"/>
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                <p class="form-error-x" th:if="${#fields.hasErrors('correctAnswer')}" th:errors="*{correctAnswer}">Error</p>
             </div>
-            <div class="form-group">
+            <div class="form-group" th:classappend="${#fields.hasErrors('wrongAnswer1')} ? 'has-error has-feedback':''">
                 <label>Wrong answer:</label>
                 <input type="text" class="form-control" th:field="*{wrongAnswer1}"/>
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                <p class="form-error-x" th:if="${#fields.hasErrors('wrongAnswer1')}" th:errors="*{wrongAnswer1}">Error</p>
             </div>
-            <div class="form-group">
+            <div class="form-group" th:classappend="${#fields.hasErrors('wrongAnswer2')} ? 'has-error has-feedback':''">
                 <label>Wrong answer:</label>
                 <input type="text" class="form-control" th:field="*{wrongAnswer2}"/>
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                <p class="form-error-x" th:if="${#fields.hasErrors('wrongAnswer2')}" th:errors="*{wrongAnswer2}">Error</p>
             </div>
-            <div class="form-group">
+            <div class="form-group" th:classappend="${#fields.hasErrors('wrongAnswer3')} ? 'has-error has-feedback':''">
                 <label>Wrong answer:</label>
                 <input type="text" class="form-control" th:field="*{wrongAnswer3}"/>
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                <p class="form-error-x" th:if="${#fields.hasErrors('wrongAnswer3')}" th:errors="*{wrongAnswer3}">Error</p>
             </div>
-            <div class="form-group">
+            <div class="form-group" th:classappend="${#fields.hasErrors('subcategory')} ? 'has-error has-feedback':''">
                 <label for="categorySelect">Subcategory:</label>
                 <select th:field="*{subcategory}" id="categorySelect" class="form-control">
                     <option th:each="subcategory : ${subcategories}"
                             th:value="${subcategory.id}" th:text="${subcategory.name}">...</option>
                 </select>
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                <p class="form-error-x" th:if="${#fields.hasErrors('subcategory')}" th:errors="*{subcategory}">Error</p>
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
+            <a th:href="@{/closed-questions}" class="btn btn-primary">Back</a>
         </form>
     </div>
 </body>

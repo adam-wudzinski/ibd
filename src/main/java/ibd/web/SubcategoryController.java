@@ -6,7 +6,10 @@ import ibd.service.SubcategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/subcategories")
@@ -31,7 +34,11 @@ public class SubcategoryController {
     }
 
     @PostMapping("/add")
-    public String postAdd(@ModelAttribute Subcategory subcategory){
+    public String postAdd(@Valid Subcategory subcategory, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("categories", categoryService.findAll());
+            return "subcategories/add";
+        }
         subcategoryService.save(subcategory);
         return "redirect:/subcategories";
     }
